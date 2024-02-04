@@ -23,6 +23,18 @@ class ProductsImageSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+# Product Variant Serializer
+class ProductVariantSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(source="option.option", read_only=True)
+    value = serializers.CharField(source="option.name", read_only=True)
+    product_id = serializers.IntegerField(source="product.id", read_only=True)
+    category_id = serializers.IntegerField(source="product.category.id", read_only=True)
+
+    class Meta:
+        model = ProductVariant
+        fields = ['id', 'name', 'value', 'price', 'product_id', 'category_id']
+
+
 # Product serializer
 class ProductSerializer(serializers.ModelSerializer):
     category_id = serializers.IntegerField(source="category.id", read_only=True)
@@ -36,6 +48,7 @@ class ProductSerializer(serializers.ModelSerializer):
         child=serializers.ImageField(allow_empty_file=False, use_url=False),
         write_only=True
     )
+    variants = ProductVariantSerializer(source="product", many=True, read_only=True)
 
     class Meta:
         model = Product
@@ -50,13 +63,3 @@ class ProductSerializer(serializers.ModelSerializer):
 
         return product
 
-
-# Product Variant Serializer
-class ProductVariantSerializer(serializers.ModelSerializer):
-    name = serializers.CharField(source="option.option", read_only=True)
-    value = serializers.CharField(source="option.name", read_only=True)
-    product_id = serializers.IntegerField(source="product.id", read_only=True)
-
-    class Meta:
-        model = ProductVariant
-        fields = ['id', 'name', 'value', 'product_id']

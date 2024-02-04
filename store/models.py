@@ -178,7 +178,7 @@ class OptionValue(models.Model):
 
 # Product Option Model
 class ProductVariant(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, verbose_name="Продукт")
+    product = models.ForeignKey(Product, related_name='product', on_delete=models.CASCADE, null=True, verbose_name="Продукт")
     color = models.ForeignKey(Color, on_delete=models.CASCADE, null=True, blank=True, verbose_name="Цвет")
     option = models.ForeignKey(OptionValue, on_delete=models.CASCADE, null=True, blank=True, verbose_name="Варианты")
     price = models.FloatField(default=None, verbose_name="Цена", null=True, blank=True)

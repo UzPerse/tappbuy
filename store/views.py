@@ -3,6 +3,7 @@ from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.filters import SearchFilter
+from rest_framework import filters
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
 from rest_framework.views import exception_handler
@@ -27,7 +28,7 @@ class CategoryListView(generics.ListAPIView):
 
 # Product API View
 class ProductListView(generics.ListAPIView):
-    queryset = Product.objects.all().order_by('?')
+    queryset = Product.objects.all().order_by('-create_time')
     serializer_class = ProductSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_class = ProductFilter
@@ -60,3 +61,6 @@ class ProductDetailView(generics.RetrieveAPIView):
 class ProductVariantListView(generics.ListAPIView):
     queryset = ProductVariant.objects.all()
     serializer_class = ProductVariantSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = ProductVariantFilter
+    ordering_fields = ['product__category_id']
