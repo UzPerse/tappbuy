@@ -74,6 +74,15 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https:\/\/localhost:*([0-9]+)?$",
 ]
 
+CORS_ALLOW_METHODS = (
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+)
+
 # AUTH_USER_MODEL = 'store.User'
 
 ROOT_URLCONF = 'core.urls'
