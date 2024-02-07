@@ -15,8 +15,8 @@ SECRET_KEY = 'django-insecure-^8e+8g5z%_-b49@416@00ep%$+18i&ki21n6_@x1#gzdz!p#7*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['smart-tech.uz', 'www.smart-tech.uz', '185.196.213.221', 'uzsmarttech.netlify.app', '127.0.0.1']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['smart-tech.uz', 'www.smart-tech.uz', '185.196.213.221', 'uzsmarttech.netlify.app']
+# ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
@@ -49,30 +49,30 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# CORS_ALLOWED_ORIGIN = [
-#     'https://smart-tech.uz',
-#     'http://185.196.213.221',
-#     'https://uzsmarttech.netlify.app'
-# ]
-
-# CORS_ALLOWED_ORIGIN_REGEXES = [
-#     # match localhost with any port
-#     r"^http:\/\/localhost:*([0-9]+)?$",
-#     r"^https:\/\/localhost:*([0-9]+)?$",
-# ]
-CORS_ALLOW_ALL_ORIGINS: True
-
-CORS_ORIGIN_WHITELIST = (
+CORS_ALLOWED_ORIGIN = [
     'https://smart-tech.uz',
     'http://185.196.213.221',
-    'https://uzsmarttech.netlify.app',
-)
+    'https://uzsmarttech.netlify.app'
+]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
     # match localhost with any port
     r"^http:\/\/localhost:*([0-9]+)?$",
     r"^https:\/\/localhost:*([0-9]+)?$",
 ]
+# CORS_ALLOW_ALL_ORIGINS: True
+
+# CORS_ORIGIN_WHITELIST = (
+#     'https://smart-tech.uz',
+#     'http://185.196.213.221',
+#     'https://uzsmarttech.netlify.app',
+# )
+
+# CORS_ALLOWED_ORIGIN_REGEXES = [
+#     # match localhost with any port
+#     r"^http:\/\/localhost:*([0-9]+)?$",
+#     r"^https:\/\/localhost:*([0-9]+)?$",
+# ]
 
 CORS_ALLOW_METHODS = (
     "DELETE",
