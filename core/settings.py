@@ -63,9 +63,9 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS: True
 
 CORS_ORIGIN_WHITELIST = (
-    'https://perse.pythonanywhere.com',
-    'https://tapp-buy.netlify.app',
-
+    'https://smart-tech.uz',
+    'http://185.196.213.221',
+    'https://uzsmarttech.netlify.app',
 )
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
