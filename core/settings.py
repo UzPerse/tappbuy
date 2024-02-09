@@ -15,8 +15,7 @@ SECRET_KEY = 'django-insecure-^8e+8g5z%_-b49@416@00ep%$+18i&ki21n6_@x1#gzdz!p#7*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['smart-tech.uz', 'www.smart-tech.uz', '185.196.213.221', 'uzsmarttech.netlify.app']
-# ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['smart-tech.uz', 'www.smart-tech.uz', '185.196.213.221', 'uzsmarttech.netlify.app', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
