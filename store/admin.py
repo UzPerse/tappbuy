@@ -55,6 +55,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 # Registration models
+admin.site.register(City)
 admin.site.register(User, UserAdmin)
 admin.site.register(Store, StoreAdmin)
 admin.site.register(Color, ColorAdmin)

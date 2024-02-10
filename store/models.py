@@ -8,12 +8,25 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from .managers import CustomUserManager
 
 
+# City model
+class City(models.Model):
+    name = models.CharField(max_length=50, blank=True, null=True, verbose_name="Название")
+
+    class Meta:
+        verbose_name = "Город"
+        verbose_name_plural = "Города"
+
+    def __str__(self):
+        return self.name
+
+
 # Custom User Model
 class User(AbstractBaseUser):
     username = models.CharField(max_length=50, unique=True, null=True, blank=True, verbose_name="Username")
     first_name = models.CharField(max_length=50, null=True, blank=True, verbose_name="Имя")
     last_name = models.CharField(max_length=50, null=True, blank=True, verbose_name="Фамилия")
     phone_number = models.CharField(max_length=13, null=True, blank=True, verbose_name="Телефон номер")
+    city = models.ForeignKey(City, null=True,  on_delete=models.CASCADE, verbose_name="Город")
     last_login = models.DateTimeField(auto_now=True, null=True)
     password = None
 
@@ -178,7 +191,8 @@ class OptionValue(models.Model):
 
 # Product Option Model
 class ProductVariant(models.Model):
-    product = models.ForeignKey(Product, related_name='product', on_delete=models.CASCADE, null=True, verbose_name="Продукт")
+    product = models.ForeignKey(Product, related_name='product', on_delete=models.CASCADE, null=True,
+                                verbose_name="Продукт")
     color = models.ForeignKey(Color, on_delete=models.CASCADE, null=True, blank=True, verbose_name="Цвет")
     option = models.ForeignKey(OptionValue, on_delete=models.CASCADE, null=True, blank=True, verbose_name="Варианты")
     price = models.FloatField(default=None, verbose_name="Цена", null=True, blank=True)
